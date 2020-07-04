@@ -175,7 +175,7 @@
           </li>
           <li>
             <label>Simulations</label>
-            <input type="text" name="simulations" value="50000" data-numberonly="true">
+            <input type="text" name="simulations" value="10000" data-numberonly="true">
           </li>
           <li>
             <label>Fight Duration (min)</label>
@@ -187,7 +187,7 @@
           </li>
           <li>
             <label>Initial Rage</label>
-            <input type="text" name="startrage" value="90" data-numberonly="true">
+            <input type="text" name="startrage" value="0" data-numberonly="true">
           </li>
           <li>
             <label>Target Level</label>
@@ -230,7 +230,7 @@
               <option value="No">No</option>
             </select>
           </li>
-          <li>
+          <li style="display: none;">
             <label>Enemy Attacking</label>
             <select dir="rtl" name="enemyattacking">
               <option value="Yes">Yes</option>
@@ -311,6 +311,12 @@
           <label>Setup</label>
           <li data-id="setup">Setup</li>
         </ul>
+      </article>
+
+      <article class="input">
+        <label>Custom Input</label>
+        <textarea id="custominput"></textarea>
+        <button>Load</button>
       </article>
 
     </div>

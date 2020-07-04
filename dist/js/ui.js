@@ -753,30 +753,41 @@ SIM.UI = {
           }
   },
 
-  loadCustomSession: function(sessionType) {
+  loadCustomSession: function(sessionType, sessionObject) {
     var view = this;
+    let _buffs, _rotation, _sources, _phases, _talents, _gear, _enchant;
 
-    let _buffs = !session[sessionType]
-      ? session.default.buffs
-      : session[sessionType].buffs;
-    let _rotation = !session[sessionType]
-      ? session.default.rotation
-      : session[sessionType].rotation;
-    let _sources = !session[sessionType]
-      ? session.default.sources
-      : session[sessionType].sources;
-    let _phases = !session[sessionType]
-      ? session.default.phases
-      : session[sessionType].phases;
-    let _talents = !session[sessionType]
-      ? session.default.talents
-      : session[sessionType].talents;
-    let _gear = !session[sessionType]
-      ? session.default.gear
-      : session[sessionType].gear;
-    let _enchant = !session[sessionType]
-      ? session.default.enchant
-      : session[sessionType].enchant;
+    if (sessionObject) {
+      _buffs = sessionObject.buffs;
+      _rotation = sessionObject.rotation;
+      _sources = sessionObject.sources;
+      _phases = sessionObject.phases;
+      _talents = sessionObject.talents;
+      _gear = sessionObject.gear;
+      _enchant = sessionObject.enchant;
+    } else {
+      _buffs = !session[sessionType]
+        ? session.default.buffs
+        : session[sessionType].buffs;
+      _rotation = !session[sessionType]
+        ? session.default.rotation
+        : session[sessionType].rotation;
+      _sources = !session[sessionType]
+        ? session.default.sources
+        : session[sessionType].sources;
+      _phases = !session[sessionType]
+        ? session.default.phases
+        : session[sessionType].phases;
+      _talents = !session[sessionType]
+        ? session.default.talents
+        : session[sessionType].talents;
+      _gear = !session[sessionType]
+        ? session.default.gear
+        : session[sessionType].gear;
+      _enchant = !session[sessionType]
+        ? session.default.enchant
+        : session[sessionType].enchant;
+    }
 
     for (let tree in _talents)
       for (let talent in _talents[tree].t)

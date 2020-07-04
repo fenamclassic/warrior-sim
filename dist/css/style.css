@@ -783,7 +783,7 @@ section {
 .settings .presets {
   display: inline-flex;
   justify-content: space-between;
-  width: auto;
+  width: 576px;
 }
 .settings .presets ul label {
   margin: 5px;
@@ -806,6 +806,23 @@ section {
   color: #123;
   font-weight: 700;
 }
+
+.settings .input {
+  display: inline-flex;
+  justify-content: space-between;
+  width: calc(100% - 582px);
+}
+
+.settings .input textarea {
+  width: 100%;
+  height: 129px;
+  resize: none;
+}
+
+.settings .input button {
+  width: 100px;
+}
+
 @media (min-width: 0px) and (max-width: 1600px) {
   .settings {
     left: 320px;

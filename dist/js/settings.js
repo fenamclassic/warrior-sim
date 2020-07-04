@@ -19,6 +19,7 @@ SIM.SETTINGS = {
     view.talents = view.body.find('article.talents');
     view.filter = view.body.find('article.filter');
     view.presets = view.body.find('article.presets');
+    view.input = view.body.find('article.input');
     view.close = view.body.find('section.settings .btn-close');
     view.bg = view.body.find('section.sidebar .bg');
   },
@@ -282,8 +283,25 @@ SIM.SETTINGS = {
     });
 
     view.presets.on('click', '.setup li', function(e) {
+      //localStorage.clear();
+      //SIM.UI.loadCustomSession('tf');
+      //view.resetUI();
+      //view.buildSpells();
+      //view.buildBuffs();
+      //view.buildTalents();
+      //SIM.UI.updateSession();
+      //SIM.UI.updateSidebar();
+      let data = SIM.SETTINGS.exportAll();
+      console.log(data);
+      view.input.find('textarea').val(data);
+    });
+
+    view.input.on('click', 'button', function(e) {
+      let data = $(this).parent().find('textarea').val();
+    
+      let json = JSON.parse(atob(data));
       localStorage.clear();
-      SIM.UI.loadCustomSession('tf');
+      SIM.UI.loadCustomSession(null, json);
       view.resetUI();
       view.buildSpells();
       view.buildBuffs();
@@ -291,6 +309,11 @@ SIM.SETTINGS = {
       SIM.UI.updateSession();
       SIM.UI.updateSidebar();
     });
+  },
+
+  exportAll: function() {
+    let data = this.copyAll();
+    return btoa(JSON.stringify(data));
   },
 
   copyBuffs: function() {
@@ -378,7 +401,7 @@ SIM.SETTINGS = {
     obj.talents = this.copyTalents();
     obj.gear = this.copyGear();
     obj.enchant = this.copyEnchants();
-    return ify(obj);
+    return obj;
   },
 
   buildSpells: function() {
